@@ -1,19 +1,26 @@
 module font_gen
    (
-    clock,
-	 max, min, mea, p2p, rms, frq,
-	 vol, time1,
-	 mode,
-    pixel_x, pixel_y,
-    rgb_text
+    input wire clock,
+	 
+    input wire [19:0] max,
+    input wire [19:0] min,
+    input wire [19:0] mea,
+    input wire [19:0] p2p,
+    input wire [19:0] rms, 
+    
+    input wire [23:0] frq,
+	 
+    input wire [15:0] vol,
+    input wire [15:0] time1,
+	 
+    input wire mode,
+
+    input wire [9:0] pixel_x,
+    input wire [9:0] pixel_y,
+
+    output reg [7:0] rgb_text
    );
-	 input wire clock;
-	 input wire [23:0] frq ;
-	 input wire [19:0]max, min, mea, p2p, rms; 
-	 input wire [15:0]vol, time1 ;
-	 input wire mode;
-    input wire [9:0] pixel_x, pixel_y;
-    output reg [7:0] rgb_text;
+	 
 	 /*reg [23:0] frq ;
 	 reg [19:0] reg_max, reg_min, mea, p2p, rms; 
 	 reg [15:0] vol, time1 ;

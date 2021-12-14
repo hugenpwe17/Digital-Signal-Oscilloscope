@@ -19,7 +19,7 @@ module ADC #(
 		output reg ADC_CS_N,		// ADC chip selection singal
 		output reg ADC_DIN,			// ADC serial data in (to ADC)
 		output reg ADC_SCLK,		// ADC serial clock
-		input ADC_DOUT				// ADC serial data out (from ADC)
+		input 	   ADC_DOUT			// ADC serial data out (from ADC)
 );
 
 	// states
@@ -34,8 +34,8 @@ module ADC #(
 	
 	// initial values
 	initial begin
-		ADC_CS_N 	<= 		1'b1;
-		ADC_DIN 	<= 		1'b0;
+		ADC_CS_N	<=		1'b1;
+		ADC_DIN 	<=		1'b0;
 		ADC_SCLK 	<= 		1'b1;
 		state 		<= 		QUIET0;
 		addr 		<= 		3'b0;
@@ -85,7 +85,7 @@ module ADC #(
 	always @(posedge clock)
 		if (reset)
 			begin
-				ADC_CS_N 	<= 		1'b1;
+				ADC_CS_N	<=		1'b1;
 				ADC_DIN 	<= 		1'b0;
 				ADC_SCLK 	<= 		1'b1;
 				state 		<= 		QUIET0;
