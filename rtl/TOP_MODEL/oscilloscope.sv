@@ -2,17 +2,24 @@ module oscilloscope (
 	input CLK,
 	input wire DCAC,
 	input reset,
-	VGA_hSync, 
-	VGA_vSync, 
-	VGA_clk,
-	blank_n,
-	Red,
-	Blue,
-	Green,
-	ADC_DIN,
-	ADC_CS_N,
+	
+	output VGA_hSync, 
+	output VGA_vSync, 
+	
+	output VGA_clk,
+	
+	output blank_n,
+	
+	output wire [7:0] Red,
+	output wire [7:0] Blue,
+	output wire [7:0] Green,
+	
 	input ADC_DOUT,
-	ADC_SCLK,
+
+	output ADC_DIN,
+	output ADC_CS_N,
+	output ADC_SCLK,
+	
 	input button_d,
 	input button_u
 );
@@ -20,16 +27,6 @@ module oscilloscope (
 	//reg [11:0]TRIG = 12'd2048;
 	//input SCALE;
 	reg [2:0]SCALE = 3'd4;
-	output VGA_clk;
-	output VGA_hSync;
-	output VGA_vSync;
-	output blank_n;
-	output wire [7:0]Red;
-	output wire [7:0]Blue;
-	output wire [7:0]Green;
-	output ADC_DIN;
-	output ADC_CS_N;
-	output ADC_SCLK;
 
 	wire [11:0]Readed_data;
 	wire ADC_CLK;

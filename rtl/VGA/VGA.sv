@@ -25,20 +25,19 @@ module VGA(
 	reg waveformArea;
 
 	integer porchHF = 640; 		//start of horizntal front porch
-	integer porchVF_1 = 384;
 	integer syncH = 655;		//start of horizontal sync
 	integer porchHB = 747; 		//start of horizontal back porch
 	integer maxH = 793; 		//total length of line.
-	
-	reg count;
-	reg [7:0]green;
 	
 	integer porchVF = 480; 		//start of vertical front porch 
 	integer syncV = 490; 		//start of vertical sync
 	integer porchVB = 492; 		//start of vertical back porch
 	integer maxV = 525; 		//total rows.
 	
+	integer porchVF_1 = 384;	// total width of waveform display region 
 	
+	reg count;
+	reg [7:0]green;
 	
 	// voltage_scale form(
 	// 	.VGA_CLK(VGA_clk),
@@ -58,21 +57,26 @@ module VGA(
 	assign waveform = {waveformArea,waveformArea,waveformArea,waveformArea,waveformArea,waveformArea,waveformArea,waveformArea};
 	//assign Green_1 = (display&green);
 	assign Green_1 = green;
+	
+	// 93sync, 46 bp, 640 display, 15 fp
+	// 2 sync, 33 bp, 480 display, 10 fp
+
+
+	// VGa_clk(Hz) = clk(Hz) * 2
+	always@(posedge clk) begin
+		q <= ~q; 
+		VGA_clk <= q;
+	end
+	
+	// cor X counter
 	always@(posedge VGA_clk) begin
 		if(xCount === maxH)
 			xCount <= 0;
 		else
 			xCount <= xCount + 1;
 	end
-	
-	// 93sync, 46 bp, 640 display, 15 fp
-	// 2 sync, 33 bp, 480 display, 10 fp
 
-	always@(posedge clk) begin
-		q <= ~q; 
-		VGA_clk <= q;
-	end
-	
+	// cor Y counter 
 	always@(posedge VGA_clk) begin
 		if(xCount === maxH) begin
 			if(yCount === maxV)
