@@ -18,7 +18,8 @@ module VGA(
 	output wire [7:0] Green_1
 );
 	
-	reg p_hSync, p_vSync; 	
+	reg p_hSync;
+	reg p_vSync; 	
 	reg q;
 	reg [3:0]counter;
 	reg displayArea;
@@ -86,6 +87,7 @@ module VGA(
 		end
 	end
 	
+	// 
 	always@(posedge VGA_clk)
 	begin
 		displayArea <= ((xCount < porchHF) && (yCount < porchVF)); 
