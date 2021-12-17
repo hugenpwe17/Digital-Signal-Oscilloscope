@@ -1,31 +1,31 @@
 module Fifo(
-clock,
-ADC_CLK,
-VGA_CLK,
-data_in,
-//trigger,
-fifo_full,
-reset,
-xaxis,
-PERIOD_FLAG,
-waveform,
-VGA_out
+	input clock,
+	input ADC_CLK,
+	input VGA_CLK,
+	input [12:0] data_in,
+	//trigger,
+	output reg fifo_full,
+	input reset,
+	input [9:0] xaxis,
+	input PERIOD_FLAG,
+	input waveform,
+	output reg [11:0] VGA_out
 //VGA_screen_print
 );//640 12
 parameter FIFO_SIZE = 10'd640;
-input PERIOD_FLAG;
-input waveform;
-input clock;
-input ADC_CLK;
-input VGA_CLK;
-input [12:0]data_in;
-//reg [12:0]data_in = 12'd500;
-input reset;
-//input [12:0]trigger;
-//output wire [9:0]Trigger_print; // for auto scale trigger will be equal to mean
-input [9:0]xaxis;
-output reg  [11:0]VGA_out;
-output reg  fifo_full;
+// input PERIOD_FLAG;
+// input waveform;
+// input clock;
+// input ADC_CLK;
+// input VGA_CLK;
+// input [12:0]data_in;
+// //reg [12:0]data_in = 12'd500;
+// input reset;
+// //input [12:0]trigger;
+// //output wire [9:0]Trigger_print; // for auto scale trigger will be equal to mean
+// input [9:0]xaxis;
+// output reg  [11:0]VGA_out;
+// output reg  fifo_full;
 reg [639:0][11:0] Data_store;//[120:0]
 //reg [9:0]input_counter;
 //reg [11:0]buffer;

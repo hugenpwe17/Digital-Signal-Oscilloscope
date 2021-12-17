@@ -137,8 +137,11 @@ module oscilloscope (
 		.clock(CLK),
 		.ADC_CLK(ADC_CLK),
 		.VGA_CLK(VGA_clk),
+
 		.data_in(Readed_data),
+
 		.fifo_full(fifo_full),
+		
 		.reset(reset),
 		.xCount(xCount),
 		.PERIOD_FLAG(PERIOD_FLAG),
