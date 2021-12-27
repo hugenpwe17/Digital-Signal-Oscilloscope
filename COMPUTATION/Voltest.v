@@ -11,7 +11,7 @@ wire [31:0] Vp2p_vol_t;
 wire [23:0] frequency;
 
 
-function_block test(.CLK(CLK), .RSTB(RSTB), .DATA_IN(DATA_IN), TRIG(TRIG),.frequency(frequency),.Vp2p_vol_t(Vp2p_vol_t), .max_vol(max_vol), .min_vol(min_vol), .mean_vol(mean_vol));
+// function_block test(.CLK(CLK), .RSTB(RSTB), .DATA_IN(DATA_IN), TRIG(TRIG),.frequency(frequency),.Vp2p_vol_t(Vp2p_vol_t), .max_vol(max_vol), .min_vol(min_vol), .mean_vol(mean_vol));
 initial 
 	begin
 	CLK = 0;
